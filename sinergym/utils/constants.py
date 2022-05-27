@@ -234,7 +234,7 @@ DEFAULT_5ZONE_ACTION_MAPPING = {
     61: (23, 26)
 }
 
-DEFAULT_5ZONE_ACTION_SPACE_DISCRETE = gym.spaces.Discrete(10)
+DEFAULT_5ZONE_ACTION_SPACE_DISCRETE = gym.spaces.Discrete(62)
 
 DEFAULT_5ZONE_ACTION_SPACE_CONTINUOUS = gym.spaces.Box(
     low=np.array([15.0, 22.5]),
