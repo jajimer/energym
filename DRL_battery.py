@@ -246,6 +246,10 @@ with mlflow.start_run(run_name=name):
         reward = LinearReward
     elif args.reward == 'exponential':
         reward = ExpReward
+    elif args.reward == 'occupancyBased':
+        reward = OccupancyBasedReward
+    elif args.reward == 'occupancyBasedProp':
+        reward = OccupancyBasedPropReward
     else:
         raise RuntimeError(
             'Reward function [{}] specified is not registered.'.format(
