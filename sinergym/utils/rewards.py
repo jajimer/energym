@@ -333,7 +333,7 @@ class OccupancyBasedReward(BaseReward):
         reward_comfort = - self.lambda_temp * comfort
 
         # Determine energy weight depending on the occupancy
-        if obs_dict['Zone People Occupant Count (SPACE1-1)'] == 0:
+        if obs_dict['Zone People Occupant Count(SPACE1-1)'] == 0:
             weight_energy = 1
         else:
             weight_energy = self.W_energy
@@ -367,7 +367,7 @@ class OccupancyBasedReward(BaseReward):
         comfort = 0.0
 
         # Comfort (penalty) will be 0 if occupancy is 0
-        if obs_dict['Zone People Occupant Count (SPACE1-1)'] > 0:
+        if obs_dict['Zone People Occupant Count(SPACE1-1)'] > 0:
             for T in temps:
                 if T < temp_range[0] or T > temp_range[1]:
                     comfort += min(abs(temp_range[0] - T), abs(T - temp_range[1]))
@@ -446,7 +446,7 @@ class OccupancyBasedPropReward(BaseReward):
         reward_comfort = - self.lambda_temp * comfort
 
         # Determine energy weight depending on the occupancy (in a proportional way)
-        weight_energy = self.W_energy + (1 - self.W_energy) * (1 - obs_dict['Zone People Occupant Count (SPACE1-1)'] / self.MAX_OCCUPANCY)
+        weight_energy = self.W_energy + (1 - self.W_energy) * (1 - obs_dict['Zone People Occupant Count(SPACE1-1)'] / self.MAX_OCCUPANCY)
 
         # Weighted sum of both terms
         reward = weight_energy * reward_energy + \
@@ -477,12 +477,12 @@ class OccupancyBasedPropReward(BaseReward):
         comfort = 0.0
 
         # Comfort (penalty) will be 0 if occupancy is 0
-        if obs_dict['Zone People Occupant Count (SPACE1-1)'] > 0:
+        if obs_dict['Zone People Occupant Count(SPACE1-1)'] > 0:
             for T in temps:
                 if T < temp_range[0] or T > temp_range[1]:
                     comfort += min(abs(temp_range[0] - T), abs(T - temp_range[1]))
 
-#        comfort = comfort * obs_dict['Zone People Occupant Count (SPACE1-1)'] / self.MAX_OCCUPANCY
+#        comfort = comfort * obs_dict['Zone People Occupant Count(SPACE1-1)'] / self.MAX_OCCUPANCY
 
         return comfort, temps
 
