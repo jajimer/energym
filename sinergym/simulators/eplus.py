@@ -204,6 +204,7 @@ class EnergyPlus(object):
         self.logger_main.debug('Got connection from %s at port %d.' % (addr))
         # Start the first data exchange
         rcv_1st = conn.recv(2048).decode(encoding='ISO-8859-1')
+        print(rcv_1st)
         self.logger_main.debug(
             'Got the first message successfully: ' + rcv_1st)
         version, flag, nDb, nIn, nBl, curSimTim, Dblist \

@@ -9,6 +9,18 @@ with open(version_file, "r") as file_handler:
 
 
 #========================5ZoneAutoDXVAV========================#
+register(
+    id='Eplus-warehouse-v1',
+    entry_point='sinergym.envs:EplusEnv',
+    kwargs={
+        'idf_file': 'ASHRAE901_Warehouse_STD2019.idf',
+        'weather_file': 'USA_PA_Pittsburgh-Allegheny.County.AP.725205_TMY3.epw',
+        'variables_file': 'variablesWarehouse.cfg',
+        'spaces_file': 'Warehouse_spaces.cfg',
+        'env_name': 'warehouse-v1',
+        'discrete_actions': False})
+
+
 # 0) Demo environment
 register(
     id='Eplus-demo-v1',
