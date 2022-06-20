@@ -7,7 +7,7 @@ from stable_baselines3 import A2C, DDPG, DQN, PPO, SAC, TD3
 import sinergym
 import sinergym.utils.gcloud as gcloud
 from sinergym.utils.constants import RANGES_5ZONE, RANGES_DATACENTER, RANGES_IW
-from sinergym.utils.rewards import ExpReward, LinearReward
+from sinergym.utils.rewards import *
 from sinergym.utils.wrappers import LoggerWrapper, NormalizeObservation
 
 # ---------------------------------------------------------------------------- #
@@ -117,6 +117,10 @@ if args.reward == 'linear':
     reward = LinearReward
 elif args.reward == 'exponential':
     reward = ExpReward
+elif args.reward == 'occupancyBased':
+    reward = OccupancyBasedReward
+elif args.reward == 'occupancyBasedProp':
+    reward = OccupancyBasedPropReward
 else:
     raise RuntimeError('Reward function specified is not registered.')
 
